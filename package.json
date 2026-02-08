@@ -1,0 +1,26 @@
+{
+  "name": "pasteboard-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for macOS pasteboard access — text, images, and custom types",
+  "type": "module",
+  "bin": {
+    "pasteboard-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build:swift": "mkdir -p build && swiftc swift/pbhelper.swift -o build/pbhelper",
+    "build:ts": "tsc",
+    "build": "npm run build:swift && npm run build:ts && chmod +x dist/index.js",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
