@@ -1,0 +1,35 @@
+{
+  "manifest_version": "0.3",
+  "name": "pasteboard",
+  "display_name": "macOS Pasteboard",
+  "version": "1.0.0",
+  "description": "Read and write macOS pasteboards — text, images, and custom types",
+  "author": {
+    "name": "Ben Lenarts"
+  },
+  "license": "MIT",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"]
+    }
+  },
+  "tools": [
+    { "name": "pasteboard_list_types", "description": "List all data type identifiers (UTIs) on the pasteboard" },
+    { "name": "pasteboard_read_text", "description": "Read plain text from the pasteboard" },
+    { "name": "pasteboard_write_text", "description": "Write plain text to the pasteboard" },
+    { "name": "pasteboard_read_image", "description": "Read image from the pasteboard" },
+    { "name": "pasteboard_write_image", "description": "Write image to the pasteboard" },
+    { "name": "pasteboard_read", "description": "Read arbitrary type data from the pasteboard" },
+    { "name": "pasteboard_write", "description": "Write arbitrary type data to the pasteboard" },
+    { "name": "pasteboard_clear", "description": "Clear the pasteboard" }
+  ],
+  "compatibility": {
+    "platforms": ["darwin"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

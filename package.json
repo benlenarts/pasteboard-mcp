@@ -12,7 +12,8 @@
     "build": "npm run build:swift && npm run build:ts && chmod +x dist/index.js",
     "prepare": "npm run build",
     "cc-install": "claude mcp add pasteboard -- node \"$PWD/dist/index.js\"",
-    "cc-uninstall": "claude mcp remove pasteboard"
+    "cc-uninstall": "claude mcp remove pasteboard",
+    "pack": "npm run build && mcpb pack . pasteboard.mcpb"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
