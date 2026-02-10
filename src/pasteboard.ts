@@ -33,10 +33,8 @@ function execPbHelper(args: string[], stdinData?: string | Buffer): Promise<Exec
 
     if (stdinData !== undefined) {
       proc.stdin.write(stdinData);
-      proc.stdin.end();
-    } else {
-      proc.stdin.end();
     }
+    proc.stdin.end();
   });
 }
 
