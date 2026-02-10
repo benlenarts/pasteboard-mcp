@@ -42,8 +42,8 @@ func readStdin() -> Data {
 
 struct Args {
     var command: String = ""
-    var pasteboard: String? = nil
-    var type: String? = nil
+    var pasteboard: String?
+    var type: String?
     var format: String = "png"
     var isBase64: Bool = false
 }
@@ -134,7 +134,7 @@ func cmdReadImage(_ args: Args) {
     let pb = getPasteboard(name: args.pasteboard)
 
     // Try to get image data from pasteboard
-    var imageRep: NSBitmapImageRep? = nil
+    var imageRep: NSBitmapImageRep?
 
     // Try TIFF first (native pasteboard format)
     if let tiffData = pb.data(forType: .tiff) {
@@ -213,18 +213,18 @@ func cmdWrite(_ args: Args) {
     let pb = getPasteboard(name: args.pasteboard)
     let pasteboardType = NSPasteboard.PasteboardType(typeStr)
 
+    pb.clearContents()
+
     if args.isBase64 {
         guard let base64String = String(data: stdinData, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines),
               let decoded = Data(base64Encoded: base64String) else {
             exitError("Invalid base64 data")
         }
-        pb.clearContents()
         pb.setData(decoded, forType: pasteboardType)
     } else {
         guard let text = String(data: stdinData, encoding: .utf8) else {
             exitError("Invalid UTF-8 input")
         }
-        pb.clearContents()
         pb.setString(text, forType: pasteboardType)
     }
 }
