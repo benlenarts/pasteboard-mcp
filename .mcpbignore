@@ -1,8 +1,11 @@
 src/
 swift/
 tsconfig.json
+esbuild.config.js
 *.mcpb
-*.ts.map
+*.js.map
 .claude/
-node_modules/typescript/
-node_modules/@types/
+.github/
+node_modules/
+dist/index.js
+dist/pasteboard.js

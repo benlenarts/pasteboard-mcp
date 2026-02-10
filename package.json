@@ -4,14 +4,14 @@
   "description": "MCP server for macOS pasteboard access — text, images, and custom types",
   "type": "module",
   "bin": {
-    "pasteboard-mcp": "dist/index.js"
+    "pasteboard-mcp": "dist/bundle.mjs"
   },
   "scripts": {
     "build:swift": "mkdir -p build && swiftc swift/pbhelper.swift -o build/pbhelper",
-    "build:ts": "tsc",
-    "build": "npm run build:swift && npm run build:ts && chmod +x dist/index.js",
+    "build:ts": "tsc && node esbuild.config.js",
+    "build": "npm run build:swift && npm run build:ts && chmod +x dist/bundle.mjs",
     "prepare": "npm run build",
-    "cc-install": "claude mcp add pasteboard -- node \"$PWD/dist/index.js\"",
+    "cc-install": "claude mcp add pasteboard -- node \"$PWD/dist/bundle.mjs\"",
     "cc-uninstall": "claude mcp remove pasteboard",
     "pack": "npm run build && npx @anthropic-ai/mcpb pack . pasteboard.mcpb"
   },
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "esbuild": "^0.27.3",
     "typescript": "^5.8.0"
   },
   "engines": {
