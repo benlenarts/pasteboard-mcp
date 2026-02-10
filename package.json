@@ -13,7 +13,8 @@
     "prepare": "npm run build",
     "cc-install": "claude mcp add pasteboard -- node \"$PWD/dist/bundle.mjs\"",
     "cc-uninstall": "claude mcp remove pasteboard",
-    "pack": "npm run build && npx @anthropic-ai/mcpb pack . pasteboard.mcpb"
+    "pack": "npm run build && npx @anthropic-ai/mcpb pack . pasteboard.mcpb",
+    "test": "vitest run"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
@@ -22,7 +23,8 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "esbuild": "^0.27.3",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
